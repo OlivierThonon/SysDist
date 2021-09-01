@@ -5,6 +5,27 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 <body>
-<p th:text="'Hello, ' + ${name} + '!'" />
+<h1 th:inline="text">Hello [[${#httpServletRequest.remoteUser}]]!</h1>
+
+<div>
+    <div th:each="articles: ${articles}" style="border: solid; margin-bottom: 3px;">
+        <p th:text="${articles.getNom()} + ' :'" style="margin: 2px;"></p>
+        <p th:text="${articles.getPrix()} + '€/u'" style="margin: 2px;"></p>
+        <form th:action="@{/panier}" method="post">
+            <div style="margin-top: 7px; margin-bottom: 7px; margin: 2px;">
+                <label for="nbArticle" >Quantité : </label>
+                <input type="range" id="nbArticle" name="nbArticle" min="0" th:max="${articles.getQuantite()}" step="1" value="0" oninput="amount.value=nbArticle.value">
+                    <output id="amount" name="amount" for="nbArticle">0</output><p style="display: inline" th:text="'/'+${articles.getQuantite()}"></p>
+                <br>
+                <input type="hidden" id="idarticle" name="idarticle" th:value="${articles.getId()}">
+                <input type="submit" value="Ajouter au panier" style="margin-top: 7px;">
+            </div>
+        </form>
+    </div>
+</div>
+
+<form th:action="@{/logout}" method="post" style="margin-top: 10px;">
+    <input type="submit" value="Sign Out"/>
+</form>
 </body>
 </html>

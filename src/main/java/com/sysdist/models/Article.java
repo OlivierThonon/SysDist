@@ -1,6 +1,7 @@
 package com.sysdist.models;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 public class Article {
@@ -11,6 +12,9 @@ public class Article {
     private String categorie;
     private int quantite;
     private float prix;
+
+    @OneToMany(mappedBy = "article")
+    Set<PanierArticle> achats;
 
 
     public Article() {
@@ -28,20 +32,48 @@ public class Article {
         return id;
     }
 
+    public void setId(Long id) {
+        this.id = id;
+    }
+
     public String getNom() {
         return nom;
+    }
+
+    public void setNom(String nom) {
+        this.nom = nom;
     }
 
     public String getCategorie() {
         return categorie;
     }
 
-    public float getPrix() {
-        return prix;
+    public void setCategorie(String categorie) {
+        this.categorie = categorie;
     }
 
     public int getQuantite() {
         return quantite;
+    }
+
+    public void setQuantite(int quantite) {
+        this.quantite = quantite;
+    }
+
+    public float getPrix() {
+        return prix;
+    }
+
+    public void setPrix(float prix) {
+        this.prix = prix;
+    }
+
+    public Set<PanierArticle> getAchats() {
+        return achats;
+    }
+
+    public void setAchats(Set<PanierArticle> achats) {
+        this.achats = achats;
     }
 
     @Override

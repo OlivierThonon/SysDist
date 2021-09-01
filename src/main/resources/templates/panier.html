@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div>
+    <div th:each="panier: ${panier}" style="border: solid; margin-bottom: 3px;">
+        <p th:text="${panier.getNom()} + ' :'" style="margin: 2px;"></p>
+        <p th:text="${panier.getPrix()} + '€/u'" style="margin: 2px;"></p>
+        <form th:action="@{/panier}" method="post">
+            <div style="margin-top: 7px; margin-bottom: 7px; margin: 2px;">
+                <label for="nbArticle" >Quantité : </label>
+                <input type="range" id="nbArticle" name="nbArticle" min="0" th:max="${panier.getQuantite()}" step="1" value="0" oninput="amount.value=nbArticle.value">
+                <output id="amount" name="amount" for="nbArticle">0</output><p style="display: inline" th:text="'/'+${panier.getQuantite()}"></p>
+                <br>
+                <input type="hidden" id="idarticle" name="idarticle" th:value="${panier.getId()}">
+                <input type="submit" value="Ajouter au panier" style="margin-top: 7px;">
+            </div>
+        </form>
+    </div>
+</div>
+</body>
+</html>
