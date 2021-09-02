@@ -17,6 +17,9 @@ public class Panier {
     @OneToMany(mappedBy = "panier")
     Set<PanierArticle> achats;
 
+    @OneToOne
+    private Commande commande;
+
     public Panier(Users user) {
         this.user = user;
     }
@@ -45,7 +48,15 @@ public class Panier {
         return achats;
     }
 
-    public void setArticles(Set<PanierArticle> achats) {
+    public void setAchats(Set<PanierArticle> achats) {
         this.achats = achats;
+    }
+
+    public Commande getCommande() {
+        return commande;
+    }
+
+    public void setCommande(Commande commande) {
+        this.commande = commande;
     }
 }

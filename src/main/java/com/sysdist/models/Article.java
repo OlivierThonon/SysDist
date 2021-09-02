@@ -82,6 +82,8 @@ public class Article {
                 "id=" + id +
                 ", nom='" + nom + '\'' +
                 ", categorie='" + categorie + '\'' +
+                ", quantite=" + quantite +
+                ", prix=" + prix +
                 '}';
     }
 }

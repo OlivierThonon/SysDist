@@ -21,11 +21,36 @@ public class Users {
 
     private String email;
 
-    private int solde = 0;
+    private float solde = 0;
 
     public Users(String username, String password, int solde) {
         this.username = username;
         this.password = password;
+        this.solde = solde;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public void setEnabled(boolean enabled) {
+        this.enabled = enabled;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public float getSolde() {
+        return solde;
+    }
+
+    public void setSolde(float solde) {
+        this.solde = solde;
     }
 
     public Users() {

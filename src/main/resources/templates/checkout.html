@@ -1,9 +1,7 @@
 <!DOCTYPE html>
-<html xmlns:th="https://www.thymeleaf.org"
-      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 <head>
     <meta charset="UTF-8">
-    <title>Panier</title>
+    <title>Title</title>
 </head>
 <body>
 <div>
@@ -18,14 +16,16 @@
             <input type="submit" value="Supprimer">
         </form>
     </div>
+    <p th:text="'Prix total : ' + ${prixtotal} + '€'"></p>
 </div>
 <div>
-    <form th:action="@{/}" method="get">
-        <input type="submit" value="Continuer mes achats" style="margin-top: 8px">
-    </form>
-
-    <form th:action="@{/checkout}" method="get">
-        <input type="submit" value="Valider mes achats" style="margin-top: 8px">
+    <form th:action="@{/checkout}" method="post">
+        <input type="hidden" name="prixtotal" th:value="${prixtotal}">
+        <input type="radio" id="express" name="prixlivraison" value="10">
+            <label for="express">Livraison express</label>
+        <input type="radio" id="normal" name="prixlivraison" value="5">
+            <label for="normal">Livraison normale</label>
+        <input type="submit" value="Valider">
     </form>
 </div>
 </body>

@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Getting Started: Serving Web Content</title>
+    <title>EShop</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 <body>
@@ -23,7 +23,14 @@
         </form>
     </div>
 </div>
-
+<div>
+    <form th:action="@{/panier}" method="get" style="margin-top: 10px">
+        <input type="submit" value="Voir le panier">
+    </form>
+    <form th:action="@{/checkout}" method="get">
+        <input type="submit" value="Valider mes achats" style="margin-top: 8px">
+    </form>
+</div>
 <form th:action="@{/logout}" method="post" style="margin-top: 10px;">
     <input type="submit" value="Sign Out"/>
 </form>
