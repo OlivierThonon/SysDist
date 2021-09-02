@@ -117,6 +117,9 @@ public class CheckoutController {
 
             panier.setCommande(commande);
             panierRepository.save(panier);
+
+            user.setSolde(user.getSolde()-prixfinal);
+            userRepository.save(user);
         }
         else
         {
